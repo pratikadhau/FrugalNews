@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1>Sign Up</h1>
+	</div>
+	<dl>
+		<div class="row">
+			<div class="col-sm-3"><dt>name</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>country</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.country">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>city</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.city">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>area</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.area">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>street</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.street">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>building</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.building">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>pincode</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.location.pincode">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3"><dt>email</dt></div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" ng-model="signUpUser.email">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<button ng-click="saveUser()"><dt>sign up</dt></button>
+			</div>
+		</div>
+	</dl>
+</div>

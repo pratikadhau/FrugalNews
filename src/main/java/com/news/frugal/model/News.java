@@ -15,6 +15,7 @@ public class News {
 	private Date reportDate;
 	private Date displayDate;
 	private String newsType;
+	private String reporterName;
 	private String reporterEmailId;
 
 	public String getNewsDetail() {
@@ -65,6 +66,14 @@ public class News {
 
 	public void setReporterEmailId(String reporterEmailId) {
 		this.reporterEmailId = reporterEmailId;
+	}
+
+	public String getReporterName() {
+		return reporterName;
+	}
+
+	public void setReporterName(String reporterName) {
+		this.reporterName = reporterName;
 	}
 	
 }

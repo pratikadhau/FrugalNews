@@ -7,6 +7,11 @@ apply plugin: 'jetty'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
  
+configurations {
+    runtime.exclude module:'taglets'
+    runtime.exclude module:'xml-apis'
+    runtime.exclude module:'xercesImpl'
+}
  
 repositories {
 	mavenLocal()
@@ -25,6 +30,8 @@ dependencies {
     testCompile 'junit:junit:4.4'
     
 }
+
+
 
 
 

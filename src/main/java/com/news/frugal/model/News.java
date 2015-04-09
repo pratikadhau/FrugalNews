@@ -10,6 +10,7 @@ import com.news.frugal.json.serializer.CustomDateSerializer;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class News {
+	private Integer newsId;
 	private String headline;
 	private String newsDetail;
 	private Date reportDate;
@@ -17,6 +18,15 @@ public class News {
 	private String newsType;
 	private String reporterName;
 	private String reporterEmailId;
+
+	
+	public Integer getNewsId() {
+		return newsId;
+	}
+
+	public void setNewsId(Integer newsId) {
+		this.newsId = newsId;
+	}
 
 	public String getNewsDetail() {
 		return newsDetail;

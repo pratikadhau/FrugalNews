@@ -23,7 +23,8 @@ public class ODSImporter implements NewsImporter {
 			List<Row> firstSheet = getNewsSheet(file);
 			for (Row row : firstSheet) {
 				if (isHeaderRow(row)) {
-					newsList.add(getNews(row));
+					News news = getNews(row);
+					newsList.add(news);
 				}
 			}
 		} catch (Exception e) {

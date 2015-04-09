@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
     registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     registry.addResourceHandler("/view/**").addResourceLocations("/view/");
     registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    registry.addResourceHandler("/modules/**").addResourceLocations("/modules/");
  }
 
  @Bean

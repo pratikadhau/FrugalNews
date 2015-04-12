@@ -4,6 +4,8 @@ homeApp.config([ '$routeProvider', function($routeProvider) {
 		controller : "HomeController",
 		templateUrl : "modules/home/home.html"
 	});
-} ]);
+} ]).run(["$rootScope",function($rootScope){
+	$rootScope.baseUrl = APP_URL;
+}]);
 
 

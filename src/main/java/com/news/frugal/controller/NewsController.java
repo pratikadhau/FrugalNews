@@ -1,7 +1,10 @@
 package com.news.frugal.controller;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -45,5 +48,17 @@ public class NewsController {
 			}
 		});
 		return filter.findFirst().get();
+	}
+	
+	@RequestMapping(value = "/api/news/types", method = RequestMethod.GET)
+	@ResponseBody
+	public Set<String> getNewsTypes(){
+		Set<String> newsTypes = new HashSet<String>();
+		newsTypes.add("Headline");
+		newsTypes.add("Business");
+		newsTypes.add("Politics");
+		newsTypes.add("Foreign");
+		newsTypes.add("Sports");
+		return newsTypes;
 	}
 }

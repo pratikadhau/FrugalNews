@@ -10,6 +10,7 @@ public class IndexController {
 
 	@RequestMapping("/home")
 	public String loadHomePage(Model model) {
+		model.addAttribute("appUrl", "http://localhost:8080/FrugalNews");
 		return "home";
 	}
 

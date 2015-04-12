@@ -21,6 +21,7 @@ homeApp.controller("HomeController", [
 				$http.get($rootScope.baseUrl + "/api/news/types/" + newsType)
 						.success(function(data) {
 							$scope.newsList = data;
+							$scope.selectedNews = "";
 						});
 			}
 
@@ -28,6 +29,7 @@ homeApp.controller("HomeController", [
 				$http.get($rootScope.baseUrl + "/api/news").success(
 						function(data) {
 							$scope.newsList = data;
+							$scope.selectedNews = "";
 						});
 			};
 		} ]);

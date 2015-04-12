@@ -1,18 +1,21 @@
-<div  ng-controller='HomeController' >
-	 <div class="container" >
-	 <div ng-include = "baseUrl+'/modules/news-navigation.html'"></div>
-	  <div class="row">
-	  	<br>
-	  </div>
-	  <div class="row">
-		<div class="col-md-4">
-	        <div class="row">
-        		<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)" class="col-md-0"  ><p>{{news.headline}}</p></a>
-    	    </div>
+<div ng-controller='HomeController'>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#/" ng-click="showsAllNews()">Home</a></li>
+		<li ng-repeat="newsType in newsTypes" role="presentation"><a
+			href="#/" ng-click="showsNews(newsType)">{{newsType}}</a></li>
+	</ul>
+	<div class="container">
+		<div class="row">
+			<br>
 		</div>
-		<div class="col-md-4">
-			{{selectedNews}}
-		</div>	  
-      </div>
-     </div>		
+		<div class="row">
+			<div class="col-md-5">
+				<div class="row">
+					<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)"
+						class="col-md-0"><p>{{news.headline}}</p></a>
+				</div>
+			</div>
+			<div class="col-md-4 text-primary">{{selectedNews}}</div>
+		</div>
+	</div>
 </div>

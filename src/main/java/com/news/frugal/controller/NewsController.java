@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,11 +59,23 @@ public class NewsController {
 	@ResponseBody
 	public Set<String> getNewsTypes(){
 		Set<String> newsTypes = new HashSet<String>();
-		newsTypes.add("Headline");
-		newsTypes.add("Business");
-		newsTypes.add("Politics");
-		newsTypes.add("Foreign");
-		newsTypes.add("Sports");
+		for (News news : newsList) {
+			newsTypes.add(news.getNewsType());
+		}
 		return newsTypes;
 	}
+	
+	@RequestMapping(value = "/api/news/types/{type}", method = RequestMethod.GET)
+	@ResponseBody
+	public List <News> getNewsTypes(@PathVariable final String type){
+		Stream<News> filteredNews = newsList.stream().filter(new Predicate<News>() {
+			@Override
+			public boolean test(News temp) {
+				return temp.getNewsType().equals(type);
+			}
+		});
+		return filteredNews.collect(Collectors.toList());
+	}
+	
+	
 }

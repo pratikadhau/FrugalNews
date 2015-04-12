@@ -1,19 +1,33 @@
 homeApp.controller("HomeController", [
 		"$scope",
+		"$rootScope",
 		"$http",
-		function($scope, $http) {
-			$http.get("http://localhost:8080/FrugalNews/api/news").success(
-					function(data) {
-						$scope.newsList = data;
+		function($scope, $rootScope, $http) {
+
+			$http.get($rootScope.baseUrl + "/api/news").success(function(data) {
+				$scope.newsList = data;
 			});
-			
-			$http.get("http://localhost:8080/FrugalNews/api/news/types").success(
+
+			$http.get($rootScope.baseUrl + "/api/news/types").success(
 					function(data) {
 						$scope.newsTypes = data;
-			});
-			
-			$scope.showSelectedNews = function(news){
-				$scope.selectedNews = news.newsDetail	;
+					});
+
+			$scope.showSelectedNews = function(news) {
+				$scope.selectedNews = news.newsDetail;
 			}
-		} ]
-);
+
+			$scope.showsNews = function(newsType) {
+				$http.get($rootScope.baseUrl + "/api/news/types/" + newsType)
+						.success(function(data) {
+							$scope.newsList = data;
+						});
+			}
+
+			$scope.showsAllNews = function() {
+				$http.get($rootScope.baseUrl + "/api/news").success(
+						function(data) {
+							$scope.newsList = data;
+						});
+			};
+		} ]);

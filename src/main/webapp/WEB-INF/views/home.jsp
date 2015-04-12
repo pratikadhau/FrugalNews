@@ -14,7 +14,10 @@
 		</script>
 	</head>
 	
-	<body ng-app="homeApp">
-				<div ng-view></div>
+	<body ng-app="homeApp" class="container">
+		<div class="text-primary">
+    		<h1>Frugal News</h1>
+		</div>
+		<div ng-view></div>
 	</body>
 </html>

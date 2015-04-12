@@ -1,7 +1,5 @@
 package com.news.frugal.news.importer;
 
-import static org.odftoolkit.simple.SpreadsheetDocument.loadDocument;
-
 import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -35,7 +33,7 @@ public class ODSImporter implements NewsImporter {
 	}
 
 	private List<Row> getNewsSheet(File file) throws Exception {
-		SpreadsheetDocument document = loadDocument(file);
+		SpreadsheetDocument document = SpreadsheetDocument.loadDocument(file);
 		List<Row> firstSheet = getFirstSheet(document);
 		return firstSheet;
 	}

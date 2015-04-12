@@ -18,32 +18,36 @@ import com.news.frugal.news.importer.ODSImporter;
 @Controller
 public class NewsController {
 	@Autowired
-	private ODSImporter odsImporter;  
-	
+	private ODSImporter odsImporter;
+
 	private List<News> newsList;
-	
+
 	@RequestMapping(value = "/api/news", method = RequestMethod.GET)
 	@ResponseBody
-	public List<News> getTodaysNews(){
-		if(newsList != null)
+	public List<News> getTodaysNews() {
+		if (newsList != null)
 			return newsList;
-		 newsList = odsImporter.importNews(new File("news.ods"));
+
+		newsList = odsImporter.importNews(new File("news.ods"));
 		Integer index = 0;
+
 		for (News news : newsList) {
 			news.setNewsId(++index);
 		}
+
 		return newsList;
 	}
-	
+
 	@RequestMapping(value = "/api/news/{newsId}", method = RequestMethod.GET)
 	@ResponseBody
-	public News getNews(@PathVariable final Integer newsId ){
+	public News getNews(@PathVariable final Integer newsId) {
 		Stream<News> filter = newsList.stream().filter(new Predicate<News>() {
 			@Override
 			public boolean test(News temp) {
 				return temp.getNewsId().equals(newsId);
 			}
 		});
+
 		return filter.findFirst().get();
 	}
 }

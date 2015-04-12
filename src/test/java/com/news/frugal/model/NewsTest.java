@@ -4,6 +4,8 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import com.news.frugal.dao.entity.News;
+
 public class NewsTest {
 
 	@Test

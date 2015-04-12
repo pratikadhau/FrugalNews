@@ -9,7 +9,7 @@ import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Row;
 import org.springframework.stereotype.Component;
 
-import com.news.frugal.model.News;
+import com.news.frugal.dao.entity.News;
 
 @Component
 public class ODSImporter implements NewsImporter {

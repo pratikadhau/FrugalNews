@@ -12,16 +12,23 @@
  * from Airpush India Pvt  Ltd. Unauthorized copying of this file, via any medium    
  * is strictly prohibited                                                            
  * Author: tushar                                                                   
- * Date: 10-Apr-2015                                                                     
- * Last Date of Modification: 10-Apr-2015 3:34:56 pm                                        
+ * Date: 12-Apr-2015                                                                     
+ * Last Date of Modification: 12-Apr-2015 4:01:01 pm                                        
  * Comments:                                                                         
  * Version: 1.0                                                                 
  *
  */
- 
-package com.news.frugal.mongo.connector;
 
-public class MongoClientConnector {
+package com.news.frugal.dao;
 
+import com.news.frugal.dao.entity.Person;
+
+public interface PersonDAO {
+	public void create(Person p);
+
+	public Person findBy(String id);
+
+	public void update(Person p);
+
+	public Integer deleteBy(String id);
 }
- 

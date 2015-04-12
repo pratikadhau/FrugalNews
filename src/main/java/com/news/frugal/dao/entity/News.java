@@ -1,16 +1,19 @@
-package com.news.frugal.model;
+package com.news.frugal.dao.entity;
 
 import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.springframework.data.annotation.Id;
 
 import com.news.frugal.json.serializer.CustomDateSerializer;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class News {
+	@Id
 	private Integer newsId;
+
 	private String headline;
 	private String newsDetail;
 	private Date reportDate;
@@ -19,7 +22,6 @@ public class News {
 	private String reporterName;
 	private String reporterEmailId;
 
-	
 	public Integer getNewsId() {
 		return newsId;
 	}
@@ -36,7 +38,7 @@ public class News {
 		this.newsDetail = newsDetail;
 	}
 
-	@JsonSerialize (using = CustomDateSerializer.class)
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getReportDate() {
 		return reportDate;
 	}
@@ -45,7 +47,7 @@ public class News {
 		this.reportDate = reportDate;
 	}
 
-	@JsonSerialize (using = CustomDateSerializer.class)
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getDisplayDate() {
 		return displayDate;
 	}
@@ -85,5 +87,4 @@ public class News {
 	public void setReporterName(String reporterName) {
 		this.reporterName = reporterName;
 	}
-	
 }

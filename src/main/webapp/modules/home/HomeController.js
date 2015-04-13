@@ -3,7 +3,8 @@ homeApp.controller("HomeController", [
 		"$rootScope",
 		"$http",
 		function($scope, $rootScope, $http) {
-
+			$scope.activeTab = 'home'
+			
 			$http.get($rootScope.baseUrl + "/api/news").success(function(data) {
 				$scope.newsList = data;
 			});
@@ -22,6 +23,7 @@ homeApp.controller("HomeController", [
 						.success(function(data) {
 							$scope.newsList = data;
 							$scope.selectedNews = "";
+							$scope.activeTab = newsType
 						});
 			}
 
@@ -30,6 +32,11 @@ homeApp.controller("HomeController", [
 						function(data) {
 							$scope.newsList = data;
 							$scope.selectedNews = "";
-						});
+							$scope.activeTab = "home";
+				});
 			};
+			
+			$scope.isActive = function (newsType){
+				return $scope.activeTab == newsType ? 'active' : '';
+			}
 		} ]);

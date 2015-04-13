@@ -11,11 +11,14 @@
 		<div class="row">
 			<div class="col-md-5">
 				<div class="row">
-					<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)"
-						class="col-md-0"><p>{{news.headline}}</p></a>
+				   	<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)"
+						class="col-md-0">
+						<h3 ng-if="isSelected(news)">{{news.headline}}</h4>
+						<h5 ng-if="!isSelected(news)">{{news.headline}}</h5>
+					</a>
 				</div>
 			</div>
-			<div class="col-md-4 text-primary">{{selectedNews}}</div>
+			<div class="col-md-4 text-primary">{{selectedNews.newsDetail}}</div>
 		</div>
 	</div>
 </div>

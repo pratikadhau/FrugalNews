@@ -15,7 +15,7 @@ homeApp.controller("HomeController", [
 					});
 
 			$scope.showSelectedNews = function(news) {
-				$scope.selectedNews = news.newsDetail;
+				$scope.selectedNews = news;
 			}
 
 			$scope.showsNews = function(newsType) {
@@ -38,5 +38,12 @@ homeApp.controller("HomeController", [
 			
 			$scope.isActive = function (newsType){
 				return $scope.activeTab == newsType ? 'active' : '';
+			}
+			
+			$scope.isSelected = function(news){
+				if($scope.selectedNews)
+				return $scope.selectedNews.newsId == news.newsId
+				else
+				return false;
 			}
 		} ]);

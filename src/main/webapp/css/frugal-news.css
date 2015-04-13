@@ -1,0 +1,11 @@
+@media (min-width: 765px) {
+
+.desktop-visible { display: block; margin: 0 auto; }
+.mobile-visible { display: none; margin: 0 auto; }
+
+}
+
+@media (max-width: 765px) {
+.mobile-visible { display: block; margin: 0 auto; }
+.desktop-visible { display: none; margin: 0 auto; }
+}

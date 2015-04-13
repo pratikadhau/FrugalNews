@@ -44,7 +44,7 @@ public class NewsController {
 	@RequestMapping(value = "/api/news/{newsId}", method = RequestMethod.GET)
 	@ResponseBody
 	public News getNews(@PathVariable final Integer newsId) {
-		Stream<News> filter = newsList.stream().filter(new Predicate<News>() {
+		Stream<News> filter = getTodaysNews().stream().filter(new Predicate<News>() {
 			@Override
 			public boolean test(News temp) {
 				return temp.getNewsId().equals(newsId);
@@ -58,7 +58,7 @@ public class NewsController {
 	@ResponseBody
 	public Set<String> getNewsTypes(){
 		Set<String> newsTypes = new HashSet<String>();
-		for (News news : newsList) {
+		for (News news : getTodaysNews()) {
 			newsTypes.add(news.getNewsType());
 		}
 		return newsTypes;
@@ -67,7 +67,7 @@ public class NewsController {
 	@RequestMapping(value = "/api/news/types/{type}", method = RequestMethod.GET)
 	@ResponseBody
 	public List <News> getNewsTypes(@PathVariable final String type){
-		Stream<News> filteredNews = newsList.stream().filter(new Predicate<News>() {
+		Stream<News> filteredNews = getTodaysNews().stream().filter(new Predicate<News>() {
 			@Override
 			public boolean test(News temp) {
 				return temp.getNewsType().equals(type);

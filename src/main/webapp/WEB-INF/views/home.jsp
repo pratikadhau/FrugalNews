@@ -7,6 +7,7 @@
 		<script src="js/angular-route.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/frugal-news.css">
 		<script src="modules/HomeModule.js"></script>
 		<script src="modules/home/HomeController.js"></script>
 		<script type="text/javascript">

@@ -5,7 +5,7 @@
 <body>
 
 	<form method="POST" action="uploadFile" enctype="multipart/form-data">
-		<table>
+		<table border="1" cellpadding="10">
 			<tr>
 				<td>Upload file</td>
 				<td> <input type="file" name="file"></td>

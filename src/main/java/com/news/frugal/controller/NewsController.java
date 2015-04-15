@@ -75,6 +75,11 @@ public class NewsController {
 		});
 		return filteredNews.collect(Collectors.toList());
 	}
+
+	public void setNews(List<News> news) {
+		this.newsList = news;
+	}
 	
 	
 }
+

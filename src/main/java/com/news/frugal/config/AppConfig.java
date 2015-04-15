@@ -3,18 +3,14 @@ package com.news.frugal.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.MongoDbFactory;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import com.mongodb.MongoClient;
 
  @Configuration
  @EnableWebMvc
@@ -44,21 +40,11 @@ import com.mongodb.MongoClient;
    configurer.enable();
  }
  
-/* public @Bean MongoDbFactory getMongoDbFactory() throws Exception {
-     return new SimpleMongoDbFactory(new MongoClient("localhost",27017), "bookguide");
+ @Bean
+ public MultipartResolver multipartResolver(){
+     CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+     commonsMultipartResolver.setDefaultEncoding("utf-8");
+     return commonsMultipartResolver;
  }
-
- public @Bean MongoTemplate getMongoTemplate() throws Exception {
-     MongoTemplate mongoTemplate = new MongoTemplate(getMongoDbFactory());
-     return mongoTemplate;
- }*/
  
- /*public @Bean MongoDbFactory getMongoDbFactory() throws Exception {
-     return new SimpleMongoDbFactory(new MongoClient("localhost",27017), "bookguide");
- }
-
- public @Bean MongoTemplate getMongoTemplate() throws Exception {
-     MongoTemplate mongoTemplate = new MongoTemplate(getMongoDbFactory());
-     return mongoTemplate;
- }*/
 }

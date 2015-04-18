@@ -1,8 +1,13 @@
 package com.news.frugal.config;
 
+import java.io.IOException;
+
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -15,7 +20,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  @Configuration
  @EnableWebMvc
  @ComponentScan({"com.news.frugal"})
-// @EnableMongoRepositories 
+ @PropertySource("classpath:app_${deploy_env}.properties")
  public class AppConfig extends WebMvcConfigurerAdapter {
 
 @Override

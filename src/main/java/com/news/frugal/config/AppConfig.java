@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 // @EnableMongoRepositories 
  public class AppConfig extends WebMvcConfigurerAdapter {
 
- @Override
+@Override
  public void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry.addResourceHandler("/css/**").addResourceLocations("/css/");
     registry.addResourceHandler("/js/**").addResourceLocations("/js/");

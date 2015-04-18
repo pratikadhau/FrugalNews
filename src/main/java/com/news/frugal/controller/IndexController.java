@@ -23,7 +23,7 @@ public class IndexController {
 	@Autowired 
 	private NewsController newsController;
 
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String loadHomePage(Model model) {
 		model.addAttribute("appUrl", "http://freenews-coherent.rhcloud.com/FrugalNews");
 		return "home";
@@ -34,7 +34,7 @@ public class IndexController {
 		return "upload";
 	}
 
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public @ResponseBody String uploadFileHandler(
 			@RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {

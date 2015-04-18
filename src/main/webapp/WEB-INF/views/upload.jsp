@@ -4,7 +4,7 @@
 </head>
 <body>
 
-	<form method="POST" action="uploadFile" enctype="multipart/form-data">
+	<form method="POST" action="upload" enctype="multipart/form-data">
 		<table border="1" cellpadding="10">
 			<tr>
 				<td>Upload file</td>

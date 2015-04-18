@@ -1,12 +1,10 @@
 package com.news.frugal.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,14 +42,19 @@ public class NewsController {
 	@RequestMapping(value = "/api/news/{newsId}", method = RequestMethod.GET)
 	@ResponseBody
 	public News getNews(@PathVariable final Integer newsId) {
-		Stream<News> filter = getTodaysNews().stream().filter(new Predicate<News>() {
+		/*Stream<News> filter = getTodaysNews().stream().filter(new Predicate<News>() {
 			@Override
 			public boolean test(News temp) {
 				return temp.getNewsId().equals(newsId);
 			}
 		});
 
-		return filter.findFirst().get();
+		return filter.findFirst().get();*/
+		for (News news : newsList) {
+			if(newsId.equals(news.getNewsId()))
+				return news;
+		}
+		return null;
 	}
 	
 	@RequestMapping(value = "/api/news/types", method = RequestMethod.GET)
@@ -67,13 +70,19 @@ public class NewsController {
 	@RequestMapping(value = "/api/news/types/{type}", method = RequestMethod.GET)
 	@ResponseBody
 	public List <News> getNewsTypes(@PathVariable final String type){
-		Stream<News> filteredNews = getTodaysNews().stream().filter(new Predicate<News>() {
+		/*Stream<News> filteredNews = getTodaysNews().stream().filter(new Predicate<News>() {
 			@Override
 			public boolean test(News temp) {
 				return temp.getNewsType().equals(type);
 			}
 		});
-		return filteredNews.collect(Collectors.toList());
+		return filteredNews.collect(Collectors.toList());*/
+		List<News> filteredNews = new ArrayList<News>();
+		for (News news : newsList) {
+			if(type.equals(news.getNewsType() ))
+				filteredNews.add(news);
+		}
+		return filteredNews;
 	}
 
 	public void setNews(List<News> news) {

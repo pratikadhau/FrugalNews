@@ -15,9 +15,8 @@ import com.news.frugal.dao.entity.News;
 public class ODSImporter implements NewsImporter {
 
 	@Override
-	public List<News> importNews(File file) throws RuntimeException {
+	public List<News> importNews(File file){
 		List<News> newsList = new ArrayList<News>();
-		try {
 			List<Row> firstSheet = getNewsSheet(file);
 			for (Row row : firstSheet) {
 				if (isHeaderRow(row)) {
@@ -25,15 +24,18 @@ public class ODSImporter implements NewsImporter {
 					newsList.add(news);
 				}
 			}
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
 
 		return newsList;
 	}
 
-	private List<Row> getNewsSheet(File file) throws Exception {
-		SpreadsheetDocument document = SpreadsheetDocument.loadDocument(file);
+	private List<Row> getNewsSheet(File file)  {
+		SpreadsheetDocument document = null;
+		try {
+			document = SpreadsheetDocument.loadDocument(file);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Row> firstSheet = getFirstSheet(document);
 		return firstSheet;
 	}
@@ -46,12 +48,22 @@ public class ODSImporter implements NewsImporter {
 		return row.getPreviousRow() != null;
 	}
 
-	private News getNews(Row row) throws ParseException {
+	private News getNews(Row row) {
 		News news = new News();
 		news.setHeadline(row.getCellByIndex(0).getDisplayText());
 		news.setNewsDetail(row.getCellByIndex(1).getDisplayText());
-		news.setReportDate(dateFormat.parse(row.getCellByIndex(2).getDisplayText()));
-		news.setDisplayDate(dateFormat.parse(row.getCellByIndex(3).getDisplayText()));
+		try {
+			news.setReportDate(dateFormat.parse(row.getCellByIndex(2).getDisplayText()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			news.setDisplayDate(dateFormat.parse(row.getCellByIndex(3).getDisplayText()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		news.setNewsType(row.getCellByIndex(4).getDisplayText());
 		news.setReporterName(row.getCellByIndex(5).getDisplayText());
 		news.setReporterEmailId(row.getCellByIndex(6).getDisplayText());

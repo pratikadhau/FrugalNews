@@ -4,14 +4,9 @@ apply plugin: 'eclipse'
 apply plugin: 'jetty'
  
 // Uses JDK 8
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
  
-configurations {
-    runtime.exclude module:'taglets'
-    runtime.exclude module:'xml-apis'
-    runtime.exclude module:'xercesImpl'
-}
  
 repositories {
 	mavenLocal()
@@ -29,5 +24,6 @@ dependencies {
     compile 'org.apache.odftoolkit:simple-odf:0.7-incubating'
     compile 'org.springframework.data:spring-data-mongodb:1.7.0.RELEASE'
     compile 'commons-fileupload:commons-fileupload:1.2'
+    compile 'commons-io:commons-io:2.4'
     testCompile 'junit:junit:4.4'
 }

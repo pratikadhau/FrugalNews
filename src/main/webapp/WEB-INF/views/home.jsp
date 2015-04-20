@@ -1,3 +1,5 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -13,11 +15,12 @@
 		<script type="text/javascript">
 			var APP_URL = '${appUrl}'
 		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8 "> </meta>
 	</head>
 	
 	<body ng-app="homeApp" class="container">
 		<div class="text-primary">
-    		<h1>Frugal News</h1>
+    		<h1>${title}</h1>
 		</div>
 		<div ng-view></div>
 	</body>

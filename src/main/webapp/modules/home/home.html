@@ -5,21 +5,25 @@
 			href="#/" ng-click="showsNews(newsType)">{{newsType}}</a></li>
 	</ul>
 	<div class="container">
-		<div class="row">
-			<br>
+		<div ng-if="isSummaryView" id="mobileNewsPanel"class="row mobile-visible">
+			 	<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)"
+						class="col-md-0">
+						<h5  class="{{readNews[news.newsId] ? 'read-news':'primary-text'}}">{{news.headline}}</h5>
+				</a>
 		</div>
-		<div class="row">
+		<div ng-if="!isSummaryView" id="mobileNewsDetail" class="row">
 			<div class="col-md-7 text-primary mobile-visible">
+			<p align="right" > <a ng-click="goToSummary()">back</a></p>
 			<p>{{selectedNews.newsDetail}}</p>
+			<p align="right"><a ng-click="goToSummary()">back</a></p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row desktop-visible">
 			<div class="col-md-5">
-				<div class="row">
+				<div class="row ">
 				   	<a ng-repeat='news in newsList' ng-click="showSelectedNews(news)"
 						class="col-md-0">
-						<h3 ng-if="isSelected(news)">{{news.headline}}</h4>
-						<h5 ng-if="!isSelected(news)">{{news.headline}}</h5>
+						<h5  class="{{readNews[news.newsId] ? 'read-news':'primary-text'}}">{{news.headline}}</h5>
 					</a>
 				</div>
 			</div>

@@ -3,8 +3,10 @@ homeApp.controller("HomeController", [
 		"$rootScope",
 		"$http",
 		function($scope, $rootScope, $http) {
+			_readNews = {};
+			$scope.readNews ={};
 			$scope.activeTab = 'home'
-			
+				$scope.isSummaryView = true;
 			$http.get($rootScope.baseUrl + "/api/news").success(function(data) {
 				$scope.newsList = data;
 			});
@@ -14,10 +16,13 @@ homeApp.controller("HomeController", [
 						$scope.newsTypes = data;
 					});
 
+			
 			$scope.showSelectedNews = function(news) {
 				$scope.selectedNews = news;
+				$scope.isSummaryView=false;
+				$scope.readNews[news.newsId] = true
 			}
-
+			
 			$scope.showsNews = function(newsType) {
 				$http.get($rootScope.baseUrl + "/api/news/types/" + newsType)
 						.success(function(data) {
@@ -25,25 +30,28 @@ homeApp.controller("HomeController", [
 							$scope.selectedNews = "";
 							$scope.activeTab = newsType
 						});
+				$scope.isSummaryView=true
 			}
 
 			$scope.showsAllNews = function() {
-				$http.get($rootScope.baseUrl + "/api/news").success(
-						function(data) {
-							$scope.newsList = data;
-							$scope.selectedNews = "";
-							$scope.activeTab = "home";
-				});
+					$http.get($rootScope.baseUrl + "/api/news").success(
+							function(data) {
+								$scope.newsList = data;
+								$scope.newsList.forEach(function (e,i,a){
+									_readNews[e.newsId]=false; 
+								});
+								$scope.readNews =_readNews;
+								$scope.selectedNews = "";
+								$scope.activeTab = "home";
+							});
 			};
 			
 			$scope.isActive = function (newsType){
 				return $scope.activeTab == newsType ? 'active' : '';
 			}
 			
-			$scope.isSelected = function(news){
-				if($scope.selectedNews)
-				return $scope.selectedNews.newsId == news.newsId
-				else
-				return false;
+			$scope.goToSummary = function(){
+				$scope.isSummaryView = true;
 			}
+			
 		} ]);

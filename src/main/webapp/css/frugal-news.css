@@ -9,3 +9,7 @@
 .mobile-visible { display: block; margin: 0 auto; }
 .desktop-visible { display: none; margin: 0 auto; }
 }
+
+.read-news {
+  color: #777;
+}

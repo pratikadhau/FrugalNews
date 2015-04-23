@@ -1,15 +1,22 @@
-@media (min-width: 765px) {
-
-.desktop-visible { display: block; margin: 0 auto; }
-.mobile-visible { display: none; margin: 0 auto; }
-
+.read-news{
+	color: gray;
+}
+@media screen and (max-width: 1279px) {
+	.mobile-visible{
+		display: block
+	}
+	
+	.desktop-visible{
+		display: none
+	}
 }
 
-@media (max-width: 765px) {
-.mobile-visible { display: block; margin: 0 auto; }
-.desktop-visible { display: none; margin: 0 auto; }
-}
-
-.read-news {
-  color: #777;
+@media screen and (min-width: 1280px) {
+	.mobile-visible{
+		display: none
+	}
+	
+	.desktop-visible{
+		display: block
+	}
 }

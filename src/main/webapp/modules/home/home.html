@@ -1,6 +1,5 @@
 <div ng-controller='HomeController'>
 	<ul class="nav nav-tabs">
-		<li role="presentation" class="{{isActive('home')}}"><a href="#/" ng-click="showsAllNews()">Home</a></li>
 		<li ng-repeat="newsType in newsTypes" role="presentation" class="{{isActive(newsType)}}"><a
 			href="#/" ng-click="showsNews(newsType)">{{newsType}}</a></li>
 	</ul>
